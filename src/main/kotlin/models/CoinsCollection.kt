@@ -1,3 +1,8 @@
 package models
 
-class CoinsCollection(val redCoins: Int,val blackCoins: Int)
+class CoinsCollection(var redCoins: Int, var blackCoins: Int) {
+    fun addCoins(otherCoinCollection: CoinsCollection) {
+        redCoins += otherCoinCollection.redCoins
+        blackCoins += otherCoinCollection.blackCoins
+    }
+}

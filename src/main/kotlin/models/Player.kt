@@ -1,5 +1,5 @@
 package models
 
-class Player(name: String, coins: Int, points: Int) {
+class Player(val name: String, var coins: CoinsCollection, var points: Int) {
 
 }
