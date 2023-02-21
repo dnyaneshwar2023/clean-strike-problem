@@ -2,10 +2,11 @@ package models
 
 import exceptions.InsufficientCoinsException
 
-class PlayGround(val firstPlayer: Player, val secondPlayer: Player, val coins: CoinsCollection) {
+class PlayGround(private val firstPlayer: Player, private val secondPlayer: Player, val coins: CoinsCollection) {
+    private var winner: Player? = null
 
-    fun addCoins(coinsToAdd: CoinsCollection) {
-        coins.addCoins(coinsToAdd)
+    fun getGameResult(): Player? {
+        return winner
     }
 
     fun performTurn(player: Player, strike: Strike) {
@@ -19,6 +20,25 @@ class PlayGround(val firstPlayer: Player, val secondPlayer: Player, val coins: C
         val returnCoins = strike.calculateReturnCoins()
         coins.addCoins(returnCoins)
 
+        updateResult()
+    }
+
+    private fun updateResult() {
+        winner = getWinner()
+    }
+
+    private fun getWinner(): Player? {
+        return when {
+            firstPlayer.points >= 5 && firstPlayer.points > secondPlayer.points + 3 -> {
+                firstPlayer
+            }
+
+            secondPlayer.points >= 5 && secondPlayer.points > firstPlayer.points + 3 -> {
+                secondPlayer
+            }
+
+            else -> null
+        }
     }
 
     private fun validateTurn(strike: Strike) {
