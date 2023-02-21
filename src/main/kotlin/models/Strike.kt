@@ -1,6 +1,9 @@
 package models
 
-open class Strike(val pocketedCoins: CoinsCollection, val isStrikerFoul: Boolean, val outThrownCoins: CoinsCollection) {
+open class Strike(
+    val pocketedCoins: CoinsCollection = CoinsCollection(0, 0),
+    val outThrownCoins: CoinsCollection = CoinsCollection(0, 0)
+) {
     open fun calculatePoints(): Int {
         return 1
     }

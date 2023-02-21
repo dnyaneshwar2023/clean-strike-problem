@@ -1,7 +1,7 @@
 package models
 
-class StrikerStrike(pocketedCoins: CoinsCollection, isStrikerFoul: Boolean, outThrownCoins: CoinsCollection) :
-    Strike(pocketedCoins, isStrikerFoul, outThrownCoins) {
+class StrikerStrike(pocketedCoins: CoinsCollection) :
+    Strike(pocketedCoins = pocketedCoins) {
 
     override fun calculatePoints(): Int {
         return -1

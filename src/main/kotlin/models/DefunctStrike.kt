@@ -1,7 +1,7 @@
 package models
 
-class DefunctStrike(pocketedCoins: CoinsCollection, isStrikerFoul: Boolean, outThrownCoins: CoinsCollection) :
-    Strike(pocketedCoins, isStrikerFoul, outThrownCoins) {
+class DefunctStrike(outThrownCoins: CoinsCollection) :
+    Strike(outThrownCoins = outThrownCoins) {
 
     override fun calculatePoints(): Int {
         return -2
